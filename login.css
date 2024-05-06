@@ -1,0 +1,30 @@
+/*
+.bg {
+    background-image: url("loginfundo.jpeg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    padding: 30px;
+    background-color: #EFEFEF;
+    box-shadow: 0px 0px 10px #000;
+    border-radius: 10px;
+}
+.login-box .input-group {
+    border-radius: 10px;
+}
+.login-box .input-group-text {
+    border-radius: 10px 0px 0px 10px;
+}
+.login-box .form-control {
+    border-radius: 0px 10px 10px 0px;
+}
+*/
+

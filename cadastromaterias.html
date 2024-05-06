@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Cadastro de Turma</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .bg { background-color: #ccc;; background-position: center; background-repeat: no-repeat; background-size: cover; height: 100vh; }
+        
+        .form-control, .btn { border-radius: 10px; }
+        .btn { padding: 10px 50px; }
+        .btn { background: linear-gradient(to right, #7CD4F7, #083B89); }
+        .btn:hover { background: linear-gradient(to right, #46B7F4, #082251); }
+        .btn-confirm { width: 100%; margin-top: 20px; }
+    </style>
+</head>
+<body class="bg">
+    <div class="container-fluid h-100 d-flex flex-column justify-content-center">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">Cadastro de Turma</h3>
+                        <form id="form-cadastro" class="row g-3 needs-validation" novalidate onsubmit="return validaForm(event)">
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <label for="curso" class="form-label">Curso</label>
+                                <select class="form-select" id="curso" name="curso" required></select>
+                                <div class="invalid-feedback">Selecione um curso</div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <label for="ano" class="form-label">Ano do curso</label>
+                                <input type="number" min="2000" max="2099" class="form-control" id="ano" name="ano" placeholder="Ex: 2022" required>
+                                <div class="invalid-feedback">Digite o ano de início do curso</div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <label for="semestre" class="form-label">Semestre atual</label>
+                                <select class="form-select" id="semestre" name="semestre" required></select>
+                                <div class="invalid-feedback">Selecione um semestre</div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary btn-confirm">Cadastrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Popula os selects de acordo com o usuário
+        populaSelects();
+
+        // Adiciona opção de escolha nos selects
+        function populaSelects() {
+            // Curso
+            const curso = document.getElementById('curso');
+            const opcao = document.createElement('option');
+            opcao.value = "";
+            opcao.text = "Selecione o curso";
+            opcao.selected = true;
+            opcao.disabled = true;
+            curso.appendChild(opcao);
+            curso.appendChild(criaOpcao('Engenharia de Computação'));
+            curso.appendChild(criaOpcao('Engenharia de Controle e Automação'));
+            curso.appendChild(criaOpcao('Engenharia de Telecomunicações'));
+            curso.appendChild(criaOpcao('Engenharia de Produção'));
+            curso.appendChild(criaOpcao('Engenharia Mecânica'));
+
+            // Semestre
+            const semestre = document.getElementById('semestre');
+            const opcaoSemestre = document.createElement('option');
+            opcaoSemestre.value = "";
+            opcaoSemestre.text = "Selecione o semestre";
+            opcaoSemestre.selected = true;
+            opcaoSemestre.disabled = true;
+            semestre.appendChild(opcaoSemestre);
+            semestre.appendChild(criaOpcao('1° semestre'));
+            semestre.appendChild(criaOpcao('2° semestre'));
+            semestre.appendChild(criaOpcao('3° semestre'));
+            semestre.appendChild(criaOpcao('4° semestre'));
+            semestre.appendChild(criaOpcao('5° semestre'));
+            semestre.appendChild(criaOpcao('6° semestre'));
+            semestre.appendChild(criaOpcao('7° semestre'));
+            semestre.appendChild(criaOpcao('8° semestre'));
+        }
+
+        // Cria opção de escolha
+        function criaOpcao(texto) {
+            const opcao = document.createElement('option');
+            opcao.value = texto;
+            opcao.text = texto;
+
+            return opcao;
+        }
+
+        function validaForm(event) {
+            // Valida se o usuário digitou o nome
+            if(document.getElementById('curso').value == "") {
+                event.preventDefault();
+                document.getElementById('curso').classList.add('is-invalid');
+            }
+            // Valida se o usuário digitou o email
+            if(document.getElementById('ano').value == "") {
+                event.preventDefault();
+                document.getElementById('ano').classList.add('is-invalid');
+            }
+            // Valida se o usuário digitou o email
+            if(document.getElementById('semestre').value == "") {
+                event.preventDefault();
+                document.getElementById('semestre').classList.add('is-invalid');
+            }
+        }
+    </script>
+</body>
+</html>
+

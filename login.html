@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+    body {background-image: url("loginfundo.jpeg");background-position: center;background-repeat: no-repeat;background-size: cover;height: 100vh;}
+    .login-box {position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);width: 350px;padding: 30px;background-color: #EFEFEF;box-shadow: 0px 0px 10px #000;border-radius: 10px;}
+    .login-box .form-control {border-radius: 10px;width: 100%;}
+    .login-box .form-control:focus {outline: none !important;box-shadow: none;}
+    .login-box .form-label-group {margin-bottom: 20px;}
+    .btn-primary {background: linear-gradient(to right, #7CD4F7, #083B89);}
+    </style>
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="login-box">
+            <h3 class="text-center mb-4">Portal do Educador</h3>
+            <form action="login.php" method="post" onsubmit="return validaFormLogin()">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" minlength="8" required>
+                    <label for="senha">Senha</label>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Entrar</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script>
+    function validaFormLogin(){
+        var email = document.getElementById("email").value;
+        var senha = document.getElementById("senha").value;
+        if(email == "" || senha == ""){
+            alert("Informe o email e senha!");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    document.getElementById("email").addEventListener("keyup", function(event){
+        if(event.keyCode === 13){
+            document.getElementById("senha").focus();
+        }
+    });
+    
+    document.getElementById("senha").addEventListener("keyup", function(event){
+        if(event.keyCode === 13){
+            document.forms[0].submit();
+        }
+    });
+</script>
+</html>
+
+
